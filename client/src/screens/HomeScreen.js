@@ -2,6 +2,12 @@ import React, { useEffect, useReducer, useState } from 'react';
 import { Link } from 'react-router-dom';
 // import data from '../data';
 import axios from 'axios';
+import logger from 'use-reducer-logger';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Products from '../components/Products';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
 
 
 const reducer = (state, action) => {
@@ -22,10 +28,10 @@ const reducer = (state, action) => {
 
 const HomeScreen = () => {
   // const [products, setProducts] = useState([]);
-  const [{ loading, error, products }, dispatch] = useReducer(reducer, {
+  const [{ loading, error, products }, dispatch] = useReducer(logger(reducer), {
     loading: true,
     error: '',
-    produts: [],
+    products: [],
   })
 
   useEffect(() => {
@@ -48,22 +54,19 @@ const HomeScreen = () => {
     <div>
          <h1>Featured Products</h1>
         <div className="products">
-        {
-          products?.map((product) => (
-            <div className="product" key={product.slug}>
-              <Link to={`/product/${product.slug}`}>
-              <img src={product.image} alt={product.name} />
-              </Link>
-              <div className="product-info">
-              <Link to={`/product/${product.slug}`}>
-                <p>{product.name}</p>
-                </Link>
-                <p className='price'>${product.price}</p>
-                <button>Add to Cart</button>
-              </div>
-            </div>
-          ))
-        }
+        { loading ? (
+          <LoadingBox />
+        ) : error ? (
+          <MessageBox variant="danger">{error}</MessageBox>
+        ) : (
+        <Row>
+          {products?.map((product) => (
+            <Col sm={6} md={4} lg={3} className="mb-3" key={product.slug}>
+                <Products product={product}  />
+            </Col>
+          ))}
+          </Row>
+        )}
         </div>
     </div>
   )
