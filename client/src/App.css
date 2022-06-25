@@ -72,6 +72,22 @@ main {
   background-color: #f48c06;
 }
 
+.img-thumbnail {
+  height: 80px;
+}
+
+
+#btn{ 
+    background-color: "#ffba08";
+    color: "#03071e";
+     border: "none";
+    font-weight: 400;
+  }
+#btn:hover {
+  background-color:blue;
+}
+
+
 .footer-text {
   color: gray;
 }

@@ -1,6 +1,7 @@
 const data = {
     products: [
         {
+            _id: "1",
             name: "Zara Summer Shirt",
             slug: "zara-summer-shirt",
             category: "Shirts",
@@ -14,6 +15,7 @@ const data = {
 
         },
         {
+            _id: "2",
             name: " Zara wide Legs",
             slug: "zara-wide-legs",
             category: "Pants",
@@ -27,6 +29,7 @@ const data = {
 
         },
         {
+            _id: "3",
             name: "Men Gray Pants",
             slug: "men-gray-pants",
             category: "Pants",
@@ -40,6 +43,7 @@ const data = {
 
         },
         {
+            _id: "4",
             name: "Women wide legs",
             slug: "women-wide-legs",
             category: "Pants",
