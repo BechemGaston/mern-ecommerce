@@ -1,41 +1,53 @@
 import express from 'express';
 import cors from 'cors';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
 import data from './data.js';
+import seedRouter from './routes/seedroutes.js';
+import productRouter from './routes/productRoutes.js';
+import userRouter from './routes/userRoutes.js';
+
+dotenv.config();
 
 const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 
-app.get('/api/products', (req, res) => {
-    res.send(data.products)
-})
+const connect = async () => {
+    try {
+        await mongoose.connect(process.env.MONGODB_URL);
 
-app.get('/api/products/slug/:slug', (req, res) => {
-    const product = data.products.find((x) => x.slug === req.params.slug);
-    if (product) {
-        res.send(product)
-    } else {
-        res.status(404).send({message: "Product unavailable"})
+        console.log("Connected to Db")
+    } catch (error) {
+        console.log(error)
     }
+}
+
+mongoose.connection.on("disconnected", () => {
+    console.log("DB disconnected");
+});
+
+
+
+app.use("/api/seed", seedRouter);
+
+app.use("/api/products", productRouter);
+
+app.use("/api/users", userRouter);
+
+
+
+app.use((err, req, res, next) => {
+    res.status(500).send({message: err.message})
 })
-
-app.get('/api/products/:id', (req, res) => {
-    const product = data.products.find((x) => x._id === req.params.id);
-    if (product) {
-        res.send(product)
-    } else {
-        res.status(404).send({message: "Product unavailable"})
-    }
-})
-
-
-
-
-
 
 
 const port = 5000;
 app.listen(port, () => {
+    connect();
     console.log(`server running on http://localhost:${port}`)
 })

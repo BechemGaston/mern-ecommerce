@@ -1,7 +1,26 @@
+import bycrypt from 'bcrypt';
+
+
+
+
 const data = {
+    users: [
+        {
+            name: 'Bechem',
+            email: 'admin@example.com',
+            password: bycrypt.hashSync('123456', 10),
+            isAdmin: true
+        },
+        {
+            name: 'John',
+            email: 'user@example.com',
+            password: bycrypt.hashSync('123456', 10),
+            isAdmin: false
+        },
+    ],
     products: [
         {
-            _id: "1",
+            // _id: "1",
             name: "Zara Summer Shirt",
             slug: "zara-summer-shirt",
             category: "Shirts",
@@ -15,7 +34,7 @@ const data = {
 
         },
         {
-            _id: "2",
+            // _id: "2",
             name: " Zara wide Legs",
             slug: "zara-wide-legs",
             category: "Pants",
@@ -29,7 +48,7 @@ const data = {
 
         },
         {
-            _id: "3",
+            // _id: "3",
             name: "Men Gray Pants",
             slug: "men-gray-pants",
             category: "Pants",
@@ -43,7 +62,7 @@ const data = {
 
         },
         {
-            _id: "4",
+            // _id: "4",
             name: "Women wide legs",
             slug: "women-wide-legs",
             category: "Pants",
