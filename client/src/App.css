@@ -91,3 +91,15 @@ main {
 .footer-text {
   color: gray;
 }
+
+
+.checkout-steps > div {
+  border-bottom: 0.2rem solid gray;
+  color: gray;
+
+}
+
+.checkout-steps > div.active {
+  border-bottom: 0.2rem solid #f48c06;
+  color: #ffba08;
+}

@@ -14,6 +14,8 @@ import { Store } from './Store';
 import CartScreen from './screens/CartScreen';
 import SigninScreen from './screens/SigninScreen';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Shipping from './screens/Shipping';
+import SignupScreen from './screens/SignupScreen';
 
 
 
@@ -24,6 +26,7 @@ function App() {
   const signoutHandler = () => {
     ctxDispatch({ type: "USER_SIGNOUT" });
     localStorage.removeItem('userInfo');
+    localStorage.removeItem('shippingAddress');
   }
 
   return (
@@ -72,6 +75,8 @@ function App() {
             <Route path="/" element={<HomeScreen />} />
             <Route path="/cart" element={<CartScreen />} />
             <Route path="/signin" element={<SigninScreen />} />
+            <Route path="/signup" element={<SignupScreen />} />
+            <Route path="/shipping" element={<Shipping />} />
             <Route path="/product/:slug" element={<ProductScreen />} />
         </Routes>
       </Container>
