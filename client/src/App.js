@@ -16,6 +16,7 @@ import SigninScreen from './screens/SigninScreen';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Shipping from './screens/Shipping';
 import SignupScreen from './screens/SignupScreen';
+import PaymentScreen from './screens/PaymentScreen';
 
 
 
@@ -27,6 +28,7 @@ function App() {
     ctxDispatch({ type: "USER_SIGNOUT" });
     localStorage.removeItem('userInfo');
     localStorage.removeItem('shippingAddress');
+    localStorage.removeItem('paymentMethod');
   }
 
   return (
@@ -77,6 +79,7 @@ function App() {
             <Route path="/signin" element={<SigninScreen />} />
             <Route path="/signup" element={<SignupScreen />} />
             <Route path="/shipping" element={<Shipping />} />
+            <Route path="/payment" element={<PaymentScreen />} />
             <Route path="/product/:slug" element={<ProductScreen />} />
         </Routes>
       </Container>
