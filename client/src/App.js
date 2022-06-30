@@ -17,6 +17,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Shipping from './screens/Shipping';
 import SignupScreen from './screens/SignupScreen';
 import PaymentScreen from './screens/PaymentScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
 
 
 
@@ -38,7 +39,7 @@ function App() {
       <Navbar bg='dark' variant='dark'>
         <Container>
            <LinkContainer to="/">
-              <Navbar.Brand>amazona</Navbar.Brand>
+              <Navbar.Brand>amazing</Navbar.Brand>
            </LinkContainer>
            <Nav className="me-auto">
              <Link to="/cart" className="nav-link">
@@ -80,6 +81,7 @@ function App() {
             <Route path="/signup" element={<SignupScreen />} />
             <Route path="/shipping" element={<Shipping />} />
             <Route path="/payment" element={<PaymentScreen />} />
+            <Route path="/placeorder" element={<PlaceOrderScreen />} />
             <Route path="/product/:slug" element={<ProductScreen />} />
         </Routes>
       </Container>

@@ -13,11 +13,11 @@ const Shipping = () => {
         cart: { shippingAddress }
      } = state;
     
-    const [fullname, setFullname] = useState( "");
-    const [address, setAddress] = useState( "");
-    const [city, setCity] = useState(  "");
-    const [postalCode, setPostalCode] = useState("");
-    const [country, setCountry] = useState("");
+    const [fullName, setFullname] = useState( shippingAddress.fullName || "");
+    const [address, setAddress] = useState(shippingAddress.address || "");
+    const [city, setCity] = useState( shippingAddress.city || "");
+    const [postalCode, setPostalCode] = useState(shippingAddress.postalCode ||"");
+    const [country, setCountry] = useState(shippingAddress.country ||"");
 
 
     useEffect(() => {
@@ -31,7 +31,7 @@ const Shipping = () => {
         ctxDispatch({
             type: 'SAVE_SHIPPING_ADDRESS',
             payload: {
-                fullname,
+                fullName,
                 address,
                 city,
                 postalCode,
@@ -41,7 +41,7 @@ const Shipping = () => {
         localStorage.setItem(
             'shippingAddress',
             JSON.stringify({
-                fullname,
+                fullName,
                 address,
                 city,
                 postalCode,
@@ -61,7 +61,7 @@ const Shipping = () => {
         <Form.Group className="mb-3" controlId="fullname">
             <Form.Label>Full Name</Form.Label>
             <Form.Control 
-            value={fullname}
+            value={fullName}
             onChange={(e) => setFullname(e.target.value)}
             required
              />
@@ -109,4 +109,4 @@ const Shipping = () => {
   )
 }
 
-export default Shipping
+export default Shipping;

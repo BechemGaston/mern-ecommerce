@@ -29,7 +29,7 @@ const PaymentScreen = () => {
     const submitHandler = (e) => {
         e.preventDefault();
         ctxDispatch({type: 'SAVE_PAYMENT_METHOD', payload: paymentMethodName});
-        localStorage.setItem('PaymentMethod', paymentMethodName);
+        localStorage.setItem('paymentMethod', paymentMethodName);
         navigate('/placeorder');
     }
 
@@ -44,7 +44,7 @@ const PaymentScreen = () => {
               <div className="mb-3">
                   <Form.Check
                   type="radio"
-                  id="paypal"
+                  id="Paypal"
                   label="Paypal"
                   value="Paypal"
                   checked={paymentMethodName === 'Paypal'}
@@ -55,7 +55,7 @@ const PaymentScreen = () => {
               <div className="mb-3">
                   <Form.Check
                   type="radio"
-                  id="stripe"
+                  id="Stripe"
                   label="Stripe"
                   value="Stripe"
                   checked={paymentMethodName === 'Stripe'}
