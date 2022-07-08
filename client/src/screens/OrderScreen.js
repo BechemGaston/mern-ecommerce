@@ -237,7 +237,7 @@ const OrderScreen = () => {
                                       </Col>
                                       <Col>${order.totalPrice.toFixed(2)}</Col>
                                   </Row>
-                              </ListGroup.Item>
+                              </ListGroup.Item>  
                               {!order.isPaid && (
                                   <ListGroup.Item>
                                       { isPending ? (
